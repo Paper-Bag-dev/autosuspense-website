@@ -66,7 +66,10 @@ const Footer = () => {
               </li>
 
               <li>
-                <a href="https://github.com/Paper-Bag-dev/autosuspense" className="hover:text-white transition">
+                <a
+                  href="https://github.com/Paper-Bag-dev/autosuspense"
+                  className="hover:text-white transition"
+                >
                   Documentation
                 </a>
               </li>
@@ -92,7 +95,7 @@ const Footer = () => {
             </h4>
 
             <ul className="space-y-3 text-sm">
-              <li>
+              {/* <li>
                 <a
                   href="#"
                   className="flex items-center gap-2 hover:text-white transition"
@@ -100,11 +103,11 @@ const Footer = () => {
                   <Globe className="w-4 h-4" />
                   Portfolio
                 </a>
-              </li>
+              </li> */}
 
               <li>
                 <a
-                  href="#"
+                  href="https://leetcode.com/u/vikalp_sh_/"
                   className="flex items-center gap-2 hover:text-white transition"
                 >
                   <Code2 className="w-4 h-4" />
@@ -114,7 +117,7 @@ const Footer = () => {
 
               <li>
                 <a
-                  href="#"
+                  href="https://drive.google.com/file/d/1AyZ4TO-9kDU1GOpj8FMv_JjPYhle4pao/view?usp=sharing"
                   className="flex items-center gap-2 hover:text-white transition"
                 >
                   <FileText className="w-4 h-4" />

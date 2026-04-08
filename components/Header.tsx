@@ -7,7 +7,7 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 glass">
       <div className="flex items-center gap-2">
         <span className="text-xl font-bold tracking-tight text-white">
-          AutoSuspense
+          &lt;AutoSuspense /&rt;
         </span>
       </div>
 
@@ -35,7 +35,7 @@ const Header = () => {
           <ExternalLink className="w-3 h-3 opacity-50" />
         </a>
         <a
-          href="https://github.com/vikalp-09/autosuspense"
+          href="https://github.com/Paper-Bag-dev/autosuspense"
           target="_blank"
           rel="noopener noreferrer"
           className="p-2 text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-full transition-all"
