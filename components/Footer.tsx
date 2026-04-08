@@ -3,7 +3,7 @@
 import { Mail, Globe, Code2, FileText } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
-const Footer = () => {
+const  Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
