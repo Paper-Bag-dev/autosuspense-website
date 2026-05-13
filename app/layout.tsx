@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "AutoSuspense",
-  description: "Made by Paper Bag Dev",
+  description: "#1 React Suspense Management Library",
 };
 
 export default function RootLayout({

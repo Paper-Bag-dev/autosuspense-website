@@ -1,9 +1,9 @@
 "use client";
-import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import ProblemSolved from "@/components/ProblemSolved";
 import Footer from "@/components/Footer";
+import HowItWorks from "@/components/HowItWorks";
 
 const Main = () => {
   return (
@@ -11,7 +11,7 @@ const Main = () => {
       <Header />
       <Hero />
       <ProblemSolved />
-
+      <HowItWorks />
 
       <div id="compatibility" className="w-full py-20 px-6 bg-slate-900/20">
         <div className="max-w-4xl mx-auto text-center">

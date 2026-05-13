@@ -3,12 +3,14 @@
 import React, { useState } from "react";
 import { cn } from "./common/utils";
 import { FileCode, Braces } from "lucide-react";
+import { CodeSkeleton } from "./common/Skeletons";
 
 // 🔥 Syntax highlighter
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { Suspend } from "autosuspense";
 
-const CodePreview = () => {
+const CodePreviewContent = () => {
   const [activeTab, setActiveTab] = useState<"parent" | "child">("parent");
 
   const parentCode = `import { AutoSuspense } from "autosuspense";
@@ -16,10 +18,8 @@ import MyChild from "./MyChild";
 
 export default function Parent() {
   return (
-    <AutoSuspense fallback={<div>Loading tree...</div>}>
-      <div className="layout">
-        <MyChild />
-      </div>
+    <AutoSuspense>
+      <MyChild />
     </AutoSuspense>
   );
 }`;
@@ -27,12 +27,13 @@ export default function Parent() {
   const childCode = `import { Suspend } from "autosuspense";
 
 const MyChild = () => {
+  const data = fetchData();
   return (
-    <div className="content">
-    <h1>Data loaded</h1>
+    <div>
+      <h1>{data} loaded</h1>
     </div>
     );
-    };
+  };
     
 // Automatically attaches to nearest AutoSuspense!
 export default Suspend(MyChild, <div>Loading...</div>);`;
@@ -99,4 +100,31 @@ export default Suspend(MyChild, <div>Loading...</div>);`;
   );
 };
 
-export default CodePreview;
+// Stable promise cache for CodePreview
+const previewPromiseCache = new Map<string, Promise<void>>();
+
+// We create a wrapper that triggers the actual suspension
+const DelayedCodePreview = ({ delay }: { delay: number }) => {
+  const id = "hero-preview";
+  
+  if (!previewPromiseCache.has(id)) {
+    const p = new Promise<void>((resolve) => {
+      setTimeout(() => {
+        (p as any).resolved = true;
+        resolve();
+      }, delay);
+    });
+    previewPromiseCache.set(id, p);
+    throw p;
+  }
+
+  const promise = previewPromiseCache.get(id)!;
+  if (!(promise as any).resolved) {
+    promise.then(() => { (promise as any).resolved = true; });
+    throw promise;
+  }
+
+  return <CodePreviewContent />;
+};
+
+export default Suspend(DelayedCodePreview, <CodeSkeleton />);

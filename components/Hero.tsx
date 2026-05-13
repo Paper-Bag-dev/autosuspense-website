@@ -3,10 +3,14 @@
 import CodePreview from "./CodePreview";
 import CopyCommand from "./common/CopyCommand";
 import { motion } from "framer-motion";
+import { AutoSuspense } from "autosuspense";
 
 const Hero = () => {
   return (
-    <section id="home" className="relative w-full min-h-[90vh] flex flex-col items-center justify-center pt-32 pb-20 px-6 overflow-hidden">
+    <section
+      id="home"
+      className="relative w-full min-h-[90vh] flex flex-col items-center justify-center pt-32 pb-20 px-6 overflow-hidden"
+    >
       <div className="max-w-7xl w-full flex flex-col lg:flex-row items-center gap-16">
         {/* Left Side: Content */}
         <div className="flex-1 text-left z-10">
@@ -50,7 +54,9 @@ const Hero = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <CodePreview />
+            <AutoSuspense>
+              <CodePreview delay={2000} />
+            </AutoSuspense>
           </motion.div>
         </div>
       </div>
